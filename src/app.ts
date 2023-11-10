@@ -5,6 +5,20 @@ import { create } from 'express-handlebars';
 import { existsSync } from 'fs';
 import { readFile, rename, writeFile } from 'fs/promises';
 import { AppOptions, JSONEditorOptions } from './types';
+import rateLimit from 'express-rate-limit';
+
+export const MS_IN_ONE_MINUTE = 60 * 1000;
+export const DEFAULT_REQUESTS_PER_WINDOW_MS = 100;
+
+/**
+ * Even though our application is meant to be hosted locally,
+ * we should still implement basic rate limiting to prevent
+ * file operation endpoints from being abused. (Denial of Service)
+ */
+export const limiter = rateLimit({
+  windowMs: MS_IN_ONE_MINUTE,
+  max: DEFAULT_REQUESTS_PER_WINDOW_MS,
+});
 
 export const startJSONEditor = (appConfig: AppOptions, options: JSONEditorOptions = {
   use_name_attributes: true,
@@ -25,6 +39,7 @@ export const startJSONEditor = (appConfig: AppOptions, options: JSONEditorOption
     },
   });
 
+  app.use(rateLimit);
   app.engine('handlebars', hbs.engine);
   app.set('view engine', 'handlebars');
   app.set('views', path.resolve(__dirname, '../src/views'));
@@ -65,3 +80,8 @@ export const startJSONEditor = (appConfig: AppOptions, options: JSONEditorOption
   app.listen(port);
   console.info(`JSON editor started on port ${port}`);
 };
+
+startJSONEditor({
+  port: 9000,
+  schemaString: 'es',
+});
