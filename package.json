@@ -1,7 +1,7 @@
 {
   "name": "@rhidium/json-editor",
   "version": "0.0.1",
-  "description": "A web-based JSON file editor, written in TypeScript.",
+  "description": "A simple, web-based JSON editor, written in TypeScript.",
   "main": "dist/app.js",
   "scripts": {
     "clean:dist": "rimraf ./dist",
@@ -36,5 +36,16 @@
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
     "express-handlebars": "^7.1.2"
-  }
+  },
+  "keywords": [
+    "json",
+    "editor",
+    "typescript",
+    "express",
+    "handlebars",
+    "express-handlebars",
+    "json-editor",
+    "config-editor",
+    "configuration-editor"
+  ]
 }

@@ -1,6 +1,8 @@
 # json-editor
 
-This is a web-based JSON file editor for our Discord bots, but it can be used with any JSON schema. It is only meant to be used locally and is merely intended as a convenient solution for our users and clients that aren't familiar with JSON.
+This is a simple, web-based JSON editor for our Discord bots, but it can be used with any JSON schema. It is only meant to be used locally and is merely intended as a convenient solution for our users that aren't familiar with JSON.
+
+When a JSON is saved locally, a backup will be created of the original file (if is exists) before it is created.
 
 ## Using the editor
 
@@ -8,7 +10,7 @@ Install the package: `npm i @rhidium/json-editor`
 
 And start the express app:
 
-`/scripts/json-editor.js`
+`scripts/json-editor.js`
 
 ```js
 // CommonJS
@@ -38,3 +40,5 @@ startJSONEditor({
   no_additional_properties: true,
 })
 ```
+
+And start the script: `node scripts/json-editor.js`
