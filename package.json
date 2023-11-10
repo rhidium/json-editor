@@ -1,0 +1,40 @@
+{
+  "name": "@rhidium/json-editor",
+  "version": "0.0.1",
+  "description": "A web-based JSON file editor, written in TypeScript.",
+  "main": "dist/app.js",
+  "scripts": {
+    "clean:dist": "rimraf ./dist",
+    "clean:modules": "rimraf ./node_modules",
+    "clean": "npm run clean:dist && npm run clean:modules",
+    "lint": "npx eslint src/**/*.ts",
+    "lint:fix": "npx eslint --fix src/**/*.ts && npx eslint --fix test/**/*.ts",
+    "prebuild": "npm run clean:dist",
+    "build": "tsup",
+    "start": "node dist/app",
+    "start:dev": "ts-node-dev --respawn --transpile-only src/app.ts",
+    "dev": "npm run start:dev",
+    "pretest": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "dist",
+    "src/views"
+  ],
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.27.0",
+    "handlebars": "^4.7.8",
+    "rimraf": "^3.0.2",
+    "ts-node-dev": "^2.0.0",
+    "tsup": "^7.2.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2"
+  }
+}

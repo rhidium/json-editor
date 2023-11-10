@@ -1,0 +1,95 @@
+<div class='container'>
+  <div class='columns'>
+    <h1 class='col-md-12'>JSON Editor</h1>
+  </div>
+  <div class='columns'>
+    <div class='column col-md-12'>
+      <button id='submit'
+              class='tiny btn btn-success'>Save</button>
+      <button id='undo-changes'
+              class='secondary tiny btn btn-warning'>Undo Changes</button>
+      <span id='valid_indicator'
+            class='badge bg-primary'
+            style="position: fixed;bottom: 0;right: 0;z-index: 9000; margin: 5px"></span>
+    </div>
+  </div>
+  <div class='columns'>
+    <div class='column col-md-12'
+         id='editor_holder'></div>
+  </div>
+</div>
+
+<div id="schema"
+     style="display: none;">{{schema}}</div>
+<div id="data"
+     style="display: none;">{{data}}</div>
+<div id="options"
+     style="display: none;">{{options}}</div>
+
+<script>
+  const schemaStr = document.getElementById('schema').innerHTML
+  const schema = JSON.parse(schemaStr)
+  const dataStr = document.getElementById('data').innerHTML
+  const data = JSON.parse(dataStr)
+  const optionsStr = document.getElementById('options').innerHTML
+  const options = JSON.parse(optionsStr)
+
+  JSONEditor.defaults.theme = 'bootstrap5';
+  const editor = new JSONEditor(document.getElementById('editor_holder'), {
+    schema,
+    theme: 'bootstrap5',
+    startval: data,
+    iconlib: "fontawesome5",
+    disable_collapse: false,
+    disable_edit_json: true,
+    disable_properties: true,
+    no_additional_properties: true,
+    ...options
+  });
+
+  document.getElementById('submit').addEventListener('click', function () {
+    const newData = editor.getValue();
+    const errors = editor.validate();
+    if (errors.length) {
+      alert('Invalid JSON data, please address all validation errors first.');
+      return;
+    }
+
+    fetch('/data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newData)
+    })
+      .then((res) => {
+        if (res.ok) alert('Data has been saved');
+        else alert('Error saving data:', res.statusText);
+      })
+      .catch((err) => {
+        alert('Error saving data:', err.message);
+      });
+  });
+
+  document.getElementById('undo-changes').addEventListener('click', function () {
+    editor.setValue(data);
+  });
+
+  // Hook up the validation indicator to update its
+  // status whenever the editor changes
+  editor.on('change', function () {
+    const errors = editor.validate();
+    const indicator = document.getElementById('valid_indicator');
+
+    // Not valid
+    if (errors.length) {
+      indicator.className = 'badge bg-danger';
+      indicator.textContent = 'Invalid';
+    }
+    // Valid
+    else {
+      indicator.className = 'badge bg-success';
+      indicator.textContent = 'Valid';
+    }
+  });
+</script>
