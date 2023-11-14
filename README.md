@@ -1,4 +1,16 @@
-# json-editor
+<div align="center">
+  <a href="https://rhidium.xyz"><img src="https://github.com/rhidium/core/assets/57721238/e6d25fa1-07cb-4284-a02a-f73fe7ef3878" width="100" alt="logo" /></a>
+
+  ![Font_PNG](https://github.com/rhidium/core/assets/57721238/9ccc5763-8336-4d1e-8187-a738bafdc519)
+
+  <p>
+    <a href="https://discord.gg/mirasaki"><img src="https://img.shields.io/discord/793894728847720468?color=5865F2&logo=discord&logoColor=white" alt="Discord server" /></a>
+    <a href="https://www.npmjs.com/package/@rhidium/json-editor"><img src="https://img.shields.io/npm/v/@rhidium/json-editor.svg?maxAge=3600" alt="npm version" /></a>
+    <a href="https://www.npmjs.com/package/@rhidium/json-editor"><img src="https://img.shields.io/npm/dt/@rhidium/json-editor.svg?maxAge=3600" alt="npm downloads" /></a>
+  </p>
+</div>
+
+# @rhidium/json-editor
 
 This is a simple, web-based JSON editor for our Discord bots, but it can be used with any JSON schema. It is only meant to be used locally and is merely intended as a convenient solution for our users that aren't familiar with JSON.
 
