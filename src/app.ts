@@ -80,8 +80,3 @@ export const startJSONEditor = (appConfig: AppOptions, options: JSONEditorOption
   app.listen(port);
   console.info(`JSON editor started on port ${port}`);
 };
-
-startJSONEditor({
-  port: 9000,
-  schemaString: 'es',
-});
