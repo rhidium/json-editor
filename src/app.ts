@@ -78,5 +78,5 @@ export const startJSONEditor = (appConfig: AppOptions, options: JSONEditorOption
   });
 
   app.listen(port);
-  console.info(`JSON editor started on port ${port}`);
+  console.info(`JSON editor started on port ${port}\nhttp://localhost:${port}`);
 };
