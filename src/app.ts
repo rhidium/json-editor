@@ -39,7 +39,7 @@ export const startJSONEditor = (appConfig: AppOptions, options: JSONEditorOption
     },
   });
 
-  app.use(rateLimit);
+  app.use(limiter);
   app.engine('handlebars', hbs.engine);
   app.set('view engine', 'handlebars');
   app.set('views', path.resolve(__dirname, '../src/views'));
