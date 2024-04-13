@@ -8,6 +8,16 @@
     <a href="https://www.npmjs.com/package/@rhidium/json-editor"><img src="https://img.shields.io/npm/v/@rhidium/json-editor.svg?maxAge=3600" alt="npm version" /></a>
     <a href="https://www.npmjs.com/package/@rhidium/json-editor"><img src="https://img.shields.io/npm/dt/@rhidium/json-editor.svg?maxAge=3600" alt="npm downloads" /></a>
   </p>
+
+  <p align="center">
+    <a href="https://github.com/rhidium/core">Core</a>
+    •
+    <a href="https://github.com/rhidium/template">Template</a>
+    •
+    <a href="https://github.com/rhidium/json-editor">JSON Editor</a>
+    •
+    <a href="https://github.com/rhidium/core">Placeholder</a>
+  </p>
 </div>
 
 # @rhidium/json-editor
